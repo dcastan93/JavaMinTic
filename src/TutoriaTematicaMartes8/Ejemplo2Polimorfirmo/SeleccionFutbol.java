@@ -1,4 +1,4 @@
-package Ejemplo2Polimorfirmo;
+package TutoriaTematicaMartes8.Ejemplo2Polimorfirmo;
 
 public class SeleccionFutbol {
     private int edad;

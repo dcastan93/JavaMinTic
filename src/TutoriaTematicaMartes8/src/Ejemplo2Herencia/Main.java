@@ -1,4 +1,4 @@
-package Ejemplo2Herencia;
+package TutoriaTematicaMartes8.Ejemplo2Herencia;
 
 import java.util.ArrayList;
 import java.util.List;

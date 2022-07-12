@@ -1,4 +1,4 @@
-package HerenciaPolimorfismo;
+package TutoriaTematicaMartes8.HerenciaPolimorfismo;
 
 public class DosDimensiones {
     private double base;

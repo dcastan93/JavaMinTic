@@ -1,6 +1,6 @@
 package Ejemplo2Polimorfismo;
 
-import Ejemplo2Herencia.SeleccionFutbol;
+import TutoriaTematicaMartes8.Ejemplo2Herencia.SeleccionFutbol;
 
 public class Entrenador extends SeleccionFutbol {
 

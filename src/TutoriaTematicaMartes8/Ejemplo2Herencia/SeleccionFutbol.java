@@ -1,4 +1,4 @@
-package Ejemplo2Herencia;
+package TutoriaTematicaMartes8.Ejemplo2Herencia;
 
 public class SeleccionFutbol {
     private int edad;

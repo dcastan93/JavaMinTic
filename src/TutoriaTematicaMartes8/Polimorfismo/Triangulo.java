@@ -1,4 +1,4 @@
-package Polimorfismo;
+package TutoriaTematicaMartes8.Polimorfismo;
 
 public class Triangulo implements Figura{
 
