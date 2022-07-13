@@ -1,8 +1,10 @@
 package Retos.Reto4;
 
 import java.util.ArrayList;
-
+ /*
 public class Hacienda implements PatronHacienda{
+
+
     List<Vehiculo> vehiculos;
 
     public Hacienda(List<Vehiculo> vehiculos) {
@@ -20,4 +22,7 @@ public class Hacienda implements PatronHacienda{
             System.out.println(v.toString());
         }
     };
+
+
 }
+  */
