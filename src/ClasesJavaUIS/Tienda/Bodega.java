@@ -13,12 +13,11 @@ public class Bodega {
 
     }
     public Producto getProducto(int id){
-        Producto productoEncontrado = null;
 
         for (Producto p: this.productosAlmacenados) {
 
             if(p.getId() == id){
-                productoEncontrado= p;
+                return p;
             }
             else{
                 System.out.println("Producto no encontrado");
@@ -26,7 +25,7 @@ public class Bodega {
 
         }
 
-        return productoEncontrado;
+        return null;
     }
     public void eliminarProducto(int id){
 
