@@ -10,6 +10,13 @@ public class Producto {
     private int precio;
 
     public Producto(){
+        this.id = 0;
+        this.tipo = "tipo";
+        this.nombre = "nombre";
+        this.marca = "marca";
+        this.presentacion = "presentacion";
+        this.cantidad = 0;
+        this.precio = 0;
 
     }
 
@@ -58,4 +65,18 @@ public class Producto {
     public int getPrecio() {
         return precio;
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", tipo='" + tipo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", marca='" + marca + '\'' +
+                ", presentacion='" + presentacion + '\'' +
+                ", cantidad=" + cantidad +
+                ", precio=" + precio +
+                '}';
+    }
+
 }
