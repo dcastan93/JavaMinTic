@@ -18,6 +18,19 @@ public class ArchivoProductos {
 
     public void guardarArchivo(){
         String info = "hola";
-       // FileWriter escribir = new FileWriter("productos.csv");
+        try {
+            FileWriter escribir = new FileWriter(this.archivo, true);
+            PrintWriter cursor = new PrintWriter(escribir);
+            cursor.println(info);
+            cursor.flush();
+            cursor.close();
+            escribir.close();
+
+        }
+        catch (Exception e){
+
+        }
     }
+
+
 }
