@@ -94,10 +94,17 @@ public class MenuOpciones {
         ArrayList<Producto> lista = this.bodega.buscarProducto(buscar);
         String datosProductos = "";
         for (Producto p : lista) {
-            datosProductos = datosProductos + p.toString()+ "\n";
+            datosProductos = datosProductos + p.mostrarInformacion()+ "\n";
 
         }
-        JOptionPane.showMessageDialog(null, datosProductos,
-                "producto encontrados", JOptionPane.INFORMATION_MESSAGE );
+        if (datosProductos.equals("")){
+            JOptionPane.showMessageDialog(null, "No se encontraron productos con ese criterio",
+                    "producto en la lista", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, datosProductos,
+                    "producto encontrados", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }
 }

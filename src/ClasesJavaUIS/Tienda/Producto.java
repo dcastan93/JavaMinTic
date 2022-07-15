@@ -82,4 +82,8 @@ public class Producto {
         return "Cod: "+ this.id+ "- Producto: "+ this.nombre+ this.marca+ " - "+this.presentacion;
 
     }
+    public String toCSV(){
+        return this.id + ";" +this.tipo + ";"+ this.nombre+";"+this.marca+";"+this.presentacion+";"+this.precio+ ";"+this.cantidad;
+
+    }
 }
