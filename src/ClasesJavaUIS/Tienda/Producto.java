@@ -78,5 +78,8 @@ public class Producto {
                 ", precio=" + precio +
                 '}';
     }
+    public String mostrarInformacion(){
+        return "Cod: "+ this.id+ "- Producto: "+ this.nombre+ this.marca+ " - "+this.presentacion;
 
+    }
 }
