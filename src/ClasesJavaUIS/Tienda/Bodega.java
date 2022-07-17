@@ -6,10 +6,15 @@ public class Bodega {
     private ArrayList<Producto> productosAlmacenados;
 
     public Bodega() {
-        this.productosAlmacenados = new ArrayList<Producto>();
+        ArchivoProductos a = new ArchivoProductos();
+
+        this.productosAlmacenados = a.cargarProductos();
     }
     public void anadirProducto(Producto producto){
         this.productosAlmacenados.add(producto);
+        ArchivoProductos archivo = new ArchivoProductos();
+        archivo.guardarProducto(producto.toCSV());
+
 
     }
     public Producto getProducto(int id){

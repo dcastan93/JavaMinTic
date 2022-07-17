@@ -50,9 +50,13 @@ public class MenuOpciones {
        int id =Integer.parseInt( JOptionPane.showInputDialog(null,
                "Ingrese codigo de producto", "CodigoProducto",
                JOptionPane.QUESTION_MESSAGE));
-       String tipo =( JOptionPane.showInputDialog(null,
+       String [] tipos = {"Aseo", "Alimento"};
+
+       int tipo =( JOptionPane.showOptionDialog(null,
                 "Ingrese tipo de producto", "TipoProducto",
-                JOptionPane.QUESTION_MESSAGE));
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, tipos, tipos[0]) );
+
+
        String nombre =( JOptionPane.showInputDialog(null,
                 "Ingrese nombre de producto", "NombreProducto",
                 JOptionPane.QUESTION_MESSAGE));
@@ -71,11 +75,11 @@ public class MenuOpciones {
                 "Ingrese cantidad de producto", "CantidadProducto",
                 JOptionPane.QUESTION_MESSAGE));
 
-       Producto p = new Producto(id,tipo, nombre, marca, presentacion, cantidad, precio);
+       Producto p = new Producto(id,tipos[tipo], nombre, marca, presentacion, cantidad, precio);
        this.bodega.anadirProducto(p);
 
        JOptionPane.showMessageDialog(null, "Producto agregado correctamente",
-               "producto a;adido", JOptionPane.INFORMATION_MESSAGE );
+               "producto añadido", JOptionPane.INFORMATION_MESSAGE );
     }
 
     public void mostrarProductos(){
