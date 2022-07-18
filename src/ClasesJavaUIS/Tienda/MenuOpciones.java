@@ -31,6 +31,7 @@ public class MenuOpciones {
                     this.presentarMenuProductos();
                     break;
                 case 1:
+                    realizarVenta();
 
                     break;
 
@@ -114,7 +115,7 @@ public class MenuOpciones {
                 "Ingrese cantidad de producto", "CantidadProducto",
                 JOptionPane.QUESTION_MESSAGE));
 
-       Producto p = new Producto(id,tipos[tipo], nombre, marca, presentacion, cantidad, precio);
+       Producto p = new Producto(id,tipos[tipo], nombre, marca, presentacion, precio, cantidad);
        this.bodega.anadirProducto(p);
 
        JOptionPane.showMessageDialog(null, "Producto agregado correctamente",
@@ -132,7 +133,7 @@ public class MenuOpciones {
                 "producto encontrados", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void buscarProductos(){
+    public boolean buscarProductos(){
         String buscar =( JOptionPane.showInputDialog(null,
                 "Ingrese criterio de busqueda del producto (tipo, nombre, presentación, codico)", "buscar",
                 JOptionPane.QUESTION_MESSAGE));
@@ -145,10 +146,13 @@ public class MenuOpciones {
         if (datosProductos.equals("")){
             JOptionPane.showMessageDialog(null, "No se encontraron productos con ese criterio",
                     "producto en la lista", JOptionPane.WARNING_MESSAGE);
+            return false;
         }
+
         else {
             JOptionPane.showMessageDialog(null, datosProductos,
                     "producto encontrados", JOptionPane.INFORMATION_MESSAGE);
+            return true;
         }
 
     }
@@ -170,13 +174,46 @@ public class MenuOpciones {
 
     public void realizarVenta(){
         Venta v = new Venta();
-        this.buscarProductos();
-        int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "digite codigo de producto para venta",
-                "vender producto", JOptionPane.QUESTION_MESSAGE));
-        Producto p = this.bodega.getProducto(codigo);
-        int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese cantidad de producto para venta",
-                "vender producto", JOptionPane.QUESTION_MESSAGE));
-        v.agregarProductoAlCarrito(p, cantidad);
+        boolean continuarVenta = false;
+        do {
+            boolean encontrado = this.buscarProductos();
+            if (encontrado) {
+                int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "digite codigo de producto para venta",
+                        "vender producto", JOptionPane.QUESTION_MESSAGE));
+                Producto p = this.bodega.getProducto(codigo);
+                int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese cantidad de producto para venta",
+                        "vender producto", JOptionPane.QUESTION_MESSAGE));
+                v.agregarProductoAlCarrito(p, cantidad);
+                JOptionPane.showMessageDialog(null, p.mostrarInformacion(),
+                        "producto añadido", JOptionPane.INFORMATION_MESSAGE);
+                int confirmacion = (JOptionPane.showConfirmDialog(null,
+                        "¿Desea añadir más productos al carrito?", "TipoProducto",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE));
+                continuarVenta = (confirmacion == JOptionPane.YES_NO_OPTION) ? true : false; //Operador ternario
+            }
+            else{
+                continuarVenta = true;
+            }
+
+
+        } while(continuarVenta);
+        int total =  v.calcularTotalVenta();
+        int confirmarVenta = ( JOptionPane.showConfirmDialog(null,
+                "El total a pagar es: $"+ total+ "\n desea pagar?", "Finalizar venta",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) );
+
+        if (confirmarVenta ==JOptionPane.YES_NO_OPTION){
+            v.finalizarVenta();
+            JOptionPane.showMessageDialog(null, "Gracias por su compra",
+                    "compra Realizada", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ha anulado su compra",
+                    "producto cancelado", JOptionPane.WARNING_MESSAGE);
+        }
+
+
+
 
     }
 }

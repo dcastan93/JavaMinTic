@@ -20,7 +20,8 @@ public class Producto {
 
     }
 
-    public Producto(int id, String tipo, String nombre, String marca, String presentacion, int cantidad, int precio) {
+    public Producto(int id, String tipo, String nombre, String marca, String presentacion, int precio, int cantidad
+    ) {
         this.id = id;
         this.tipo = tipo;
         this.nombre = nombre;
@@ -74,12 +75,21 @@ public class Producto {
                 ", nombre='" + nombre + '\'' +
                 ", marca='" + marca + '\'' +
                 ", presentacion='" + presentacion + '\'' +
-                ", cantidad=" + cantidad + '\''+
                 ", precio=" + precio + '\''+
+                ", cantidad=" + cantidad + '\''+
                 '}';
     }
     public String mostrarInformacion(){
-        return "Cod: "+ this.id+ "- Producto: "+ this.nombre+ this.marca+ " - "+this.presentacion;
+        //return "Cod: "+ this.id+ "- Producto: "+ this.nombre+ this.marca+ " - "+this.presentacion;
+        return "Producto{" +
+                "id=" + id +
+                ", tipo='" + tipo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", marca='" + marca + '\'' +
+                ", presentacion='" + presentacion + '\'' +
+                ", precio=" + precio + '\''+
+                ", cantidad=" + cantidad + '\''+
+                '}';
 
     }
     public String toCSV(){
