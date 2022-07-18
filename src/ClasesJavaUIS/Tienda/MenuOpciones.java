@@ -167,4 +167,16 @@ public class MenuOpciones {
 
 
     }
+
+    public void realizarVenta(){
+        Venta v = new Venta();
+        this.buscarProductos();
+        int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "digite codigo de producto para venta",
+                "vender producto", JOptionPane.QUESTION_MESSAGE));
+        Producto p = this.bodega.getProducto(codigo);
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese cantidad de producto para venta",
+                "vender producto", JOptionPane.QUESTION_MESSAGE));
+        v.agregarProductoAlCarrito(p, cantidad);
+
+    }
 }

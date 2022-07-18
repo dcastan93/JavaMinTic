@@ -65,9 +65,13 @@ public class Bodega {
             this.productosAlmacenados.get(index).setCantidad(productoIncrementar.getCantidad() + cantidad);
 
         }
+        this.actualizarListaEnArchivo();
+
+    }
+
+    public void actualizarListaEnArchivo(){
         ArchivoProductos a = new ArchivoProductos();
         a.actualizarLista(this.productosAlmacenados);
-
     }
 
     public void disminuirProducto(int id, int cantidad){
