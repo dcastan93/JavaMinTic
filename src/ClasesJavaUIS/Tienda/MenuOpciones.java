@@ -1,23 +1,57 @@
 package ClasesJavaUIS.Tienda;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MenuOpciones {
-    private String menuPrincipal;
+    private String []  menuPrincipal;
+    private String  menuProductos;
     private Bodega bodega;
     public MenuOpciones(){
         this.bodega = new Bodega();
-        this.menuPrincipal = "Menu principal \n"+ "1. Ingresar producto \n"+
-               "2. Mostrar productos\n" + "3. Buscar un producto\n" +"0. Salir \n";
+        this.menuPrincipal = new String[]{" Gestionar productos ",
+                " Realizar venta", " Salir "};
+        this.menuProductos = "Menu productos \n"+ "1. Ingresar producto \n"+
+               "2. Mostrar productos\n" + "3. Buscar un producto\n" +
+                "0. Volcer al menu principal \n";
     }
 
+
     public void presentarMenuPrincipal(){
+        int opcion = 0;
+        do{
+            Object o = ( JOptionPane.showInputDialog(null, "Seleccione opción", "Programa del veci",
+                    JOptionPane.QUESTION_MESSAGE, null,  this.menuPrincipal, this.menuPrincipal[0]));
+            //switch para cada opcion
+            opcion = Arrays.asList(this.menuPrincipal).indexOf(o);
+
+
+            switch (opcion) {
+                case 0:
+                    this.presentarMenuProductos();
+                    break;
+                case 1:
+
+                    break;
+
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Muchas gracias", "salida", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opcion incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+
+        }while(opcion != 2);
+    }
+
+    public void presentarMenuProductos(){
         //variable para generar opcion
         int opcion = 0;
         //ciclo indefinido para que entre al menos una vez
         do{
             //pregunta por opcion
-            opcion =Integer.parseInt( JOptionPane.showInputDialog(null, this.menuPrincipal));
+            opcion =Integer.parseInt( JOptionPane.showInputDialog(null, this.menuProductos));
             //switch para cada opcion
 
             switch (opcion){
