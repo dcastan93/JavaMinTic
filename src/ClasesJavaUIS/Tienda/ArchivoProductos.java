@@ -1,6 +1,7 @@
 package ClasesJavaUIS.Tienda;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 
@@ -13,9 +14,13 @@ public class ArchivoProductos {
     }
 
     public void guardarProducto(String texto){
+        this.guardar(texto, true);
 
+    }
+
+    private void guardar(String texto, Boolean agregar){
         try {
-            FileWriter escribir = new FileWriter(this.archivo, true);
+            FileWriter escribir = new FileWriter(this.archivo, Charset.forName("UTF-8"), agregar );
             PrintWriter cursor = new PrintWriter(escribir);
             cursor.println(texto);
             cursor.flush();
@@ -56,6 +61,20 @@ public class ArchivoProductos {
 
         }
         return listaCargada;
+    }
+
+    public void actualizarLista(ArrayList<Producto> lista){
+        String texto = "";
+        for ( int i=0; i<lista.size(); i++){
+            if ( i !=0){
+                texto = texto + "\n";
+            }
+            texto = texto + lista.get(i).toCSV() ;
+
+        }
+
+        guardar(texto, false);
+
     }
 
 

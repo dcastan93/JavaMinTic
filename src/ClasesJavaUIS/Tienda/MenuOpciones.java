@@ -12,7 +12,7 @@ public class MenuOpciones {
         this.menuPrincipal = new String[]{" Gestionar productos ",
                 " Realizar venta", " Salir "};
         this.menuProductos = "Menu productos \n"+ "1. Ingresar producto \n"+
-               "2. Mostrar productos\n" + "3. Buscar un producto\n" +
+               "2. Mostrar productos\n" + "3. Buscar un producto\n" +"4. Surtir producto\n"+
                 "0. Volcer al menu principal \n";
     }
 
@@ -63,6 +63,11 @@ public class MenuOpciones {
                     break;
                 case 3:
                     buscarProductos();
+                    break;
+
+                case 4:
+                    surtirProducto();
+
                     break;
                 case 0:
                     JOptionPane.showMessageDialog(null, "!!Hasta pronto!!", "Salir", JOptionPane.INFORMATION_MESSAGE);
@@ -117,12 +122,14 @@ public class MenuOpciones {
     }
 
     public void mostrarProductos(){
+        String datosProductos = "";
         ArrayList<Producto> lista = this.bodega.getProductosAlmacenados();
         for (Producto p : lista) {
-            JOptionPane.showMessageDialog(null, p.toString(),
-                    "producto en la lista", JOptionPane.INFORMATION_MESSAGE );
+            datosProductos = datosProductos + p.mostrarInformacion()+ "\n";
 
         }
+        JOptionPane.showMessageDialog(null, datosProductos,
+                "producto encontrados", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void buscarProductos(){
@@ -143,6 +150,21 @@ public class MenuOpciones {
             JOptionPane.showMessageDialog(null, datosProductos,
                     "producto encontrados", JOptionPane.INFORMATION_MESSAGE);
         }
+
+    }
+
+    public void surtirProducto(){
+        this.buscarProductos();
+        int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "digite codigo de producto para surtir",
+                "Surtir producto", JOptionPane.QUESTION_MESSAGE));
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese cantidad de producto para surtir",
+                "Surtir producto", JOptionPane.QUESTION_MESSAGE));
+        this.bodega.incrementarProducto(codigo, cantidad);
+        Producto p = this.bodega.getProducto(codigo);
+        JOptionPane.showMessageDialog(null, p.mostrarInformacion(),
+                "producto surtido", JOptionPane.INFORMATION_MESSAGE);
+
+
 
     }
 }

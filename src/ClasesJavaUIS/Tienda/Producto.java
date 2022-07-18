@@ -74,8 +74,8 @@ public class Producto {
                 ", nombre='" + nombre + '\'' +
                 ", marca='" + marca + '\'' +
                 ", presentacion='" + presentacion + '\'' +
-                ", cantidad=" + cantidad +
-                ", precio=" + precio +
+                ", cantidad=" + cantidad + '\''+
+                ", precio=" + precio + '\''+
                 '}';
     }
     public String mostrarInformacion(){
