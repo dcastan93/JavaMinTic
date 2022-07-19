@@ -1,0 +1,1 @@
+INSERT INTO TProductos (codigobarras, tipo, nombre, marca, presentacion, precio, cantidad) VALUES (789,"Aseo", "Jabon de mano", "Dove", "Tarro x 500ml", 15000, 10);

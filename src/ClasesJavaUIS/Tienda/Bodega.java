@@ -7,7 +7,6 @@ public class Bodega {
 
     public Bodega() {
         ArchivoProductos a = new ArchivoProductos();
-
         this.productosAlmacenados = a.cargarProductos();
     }
     public void anadirProducto(Producto producto){
@@ -34,6 +33,8 @@ public class Bodega {
     }
 
     public ArrayList<Producto> getProductosAlmacenados() {
+        ArchivoProductos a = new ArchivoProductos();
+        this.productosAlmacenados = a.cargarProductos();
         return this.productosAlmacenados;
     }
 
