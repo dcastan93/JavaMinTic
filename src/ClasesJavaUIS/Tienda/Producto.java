@@ -2,6 +2,7 @@ package ClasesJavaUIS.Tienda;
 
 public class Producto {
     private int id;
+    private int codigoBarras = 0;
     private String tipo;
     private String nombre;
     private String marca;
@@ -11,6 +12,7 @@ public class Producto {
 
     public Producto(){
         this.id = 0;
+        this.codigoBarras = 0;
         this.tipo = "tipo";
         this.nombre = "nombre";
         this.marca = "marca";
@@ -20,9 +22,10 @@ public class Producto {
 
     }
 
-    public Producto(int id, String tipo, String nombre, String marca, String presentacion, int precio, int cantidad
+    public Producto(int id, int codigoBarras, String tipo, String nombre, String marca, String presentacion, int precio, int cantidad
     ) {
         this.id = id;
+        this.codigoBarras = codigoBarras;
         this.tipo = tipo;
         this.nombre = nombre;
         this.marca = marca;
@@ -65,6 +68,14 @@ public class Producto {
 
     public int getPrecio() {
         return precio;
+    }
+
+    public int getCodigoBarras() {
+        return codigoBarras;
+    }
+
+    public void setCodigoBarras(int codigoBarras) {
+        this.codigoBarras = codigoBarras;
     }
 
     @Override

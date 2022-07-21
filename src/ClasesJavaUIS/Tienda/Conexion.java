@@ -45,30 +45,50 @@ public class Conexion {
 
         }
     }
-    public void actualizarDatosBD(String sql){
-        try {
-            int cant = ejecutorSQL.executeUpdate(sql);//devuelve un entero con el numero de registros modificados
-
+    public boolean actualizarDatosBD(String sql){
+        try
+        {
+            int cant = ejecutorSQL.executeUpdate(sql);
+            if (cant > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        catch (Exception e){
-
+        catch (Exception e)
+        {
+            return false;
         }
     }
-    public void consultarDatosBD(String sql){
+    public ResultSet consultarDatosBD(String sql){
         try {
             rs = ejecutorSQL.executeQuery(sql);//si se ejecuta el query se devuelve lista con registros afectados
+            return rs;
         }
         catch (Exception e){
+            return null;
 
         }
     }
-    public void borrarDatosBD(String sql){
-        try {
-            int cant = ejecutorSQL.executeUpdate(sql);//devuelve un entero con el numero de registros modificados
-
+    public boolean borrarDatosBD(String sql){
+        try
+        {
+            int cant = ejecutorSQL.executeUpdate(sql);
+            if (cant > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        catch (Exception e){
-
+        catch (Exception e)
+        {
+            return false;
         }
     }
 }

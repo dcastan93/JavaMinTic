@@ -1,18 +1,16 @@
 package ClasesJavaUIS.Tienda;
 
 import java.util.ArrayList;
+import java.sql.ResultSet;
 //Clase contenedora
 public class Bodega {
     private ArrayList<Producto> productosAlmacenados;
 
     public Bodega() {
-        ArchivoProductos a = new ArchivoProductos();
-        this.productosAlmacenados = a.cargarProductos();
+
     }
     public void anadirProducto(Producto producto){
-        this.productosAlmacenados.add(producto);
-        ArchivoProductos archivo = new ArchivoProductos();
-        archivo.guardarProducto(producto.toCSV());
+
 
 
     }
@@ -33,8 +31,35 @@ public class Bodega {
     }
 
     public ArrayList<Producto> getProductosAlmacenados() {
-        ArchivoProductos a = new ArchivoProductos();
-        this.productosAlmacenados = a.cargarProductos();
+        this.productosAlmacenados.clear();
+        Conexion con = new Conexion();
+        con.crearConexion();
+        //operaciones
+        String sql = "SELECT id, codigobarras, nombre, marca, presentacio, precio, cantidad" +
+                "FROM TProductos";
+
+        ResultSet rs = con.consultarDatosBD(sql);
+        try {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int codigobarras = rs.getInt(2);
+                String tipo = rs.getString(3);
+                String nombre = rs.getString(4);
+                String marca = rs.getString(5);
+                String presentacion = rs.getString(6);
+                int precio = rs.getInt(7);
+                int cantidad = rs.getInt(8);
+                Producto p = new Producto(id, codigobarras, tipo, nombre, marca, presentacion, precio, cantidad);
+
+            }
+        }
+        catch (Exception e){
+            return null;
+
+        }
+
+
+        con.cerrarConexion();
         return this.productosAlmacenados;
     }
 
@@ -71,8 +96,7 @@ public class Bodega {
     }
 
     public void actualizarListaEnArchivo(){
-        ArchivoProductos a = new ArchivoProductos();
-        a.actualizarLista(this.productosAlmacenados);
+
     }
 
     public void disminuirProducto(int id, int cantidad){
