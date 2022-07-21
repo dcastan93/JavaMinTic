@@ -12,7 +12,10 @@ public class Lote {
 
     public void agregarProducto(Producto p){
         this.productos.add(p);
+        System.out.println("Hola");
 
     }
 
 }
+
+//se hace para prueba
