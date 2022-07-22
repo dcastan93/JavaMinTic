@@ -126,7 +126,7 @@ public class MenuOpciones {
         String datosProductos = "";
         ArrayList<Producto> lista = this.bodega.getProductosAlmacenados();
         for (Producto p : lista) {
-            datosProductos = datosProductos + p.mostrarInformacion()+ "\n";
+            datosProductos = datosProductos + p.toString()+ "\n";
 
         }
         JOptionPane.showMessageDialog(null, datosProductos,

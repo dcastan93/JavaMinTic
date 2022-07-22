@@ -2,7 +2,7 @@ package ClasesJavaUIS.Tienda;
 
 public class Producto {
     private int id;
-    private int codigoBarras = 0;
+    private int codigobarras = 0;
     private String tipo;
     private String nombre;
     private String marca;
@@ -12,7 +12,7 @@ public class Producto {
 
     public Producto(){
         this.id = 0;
-        this.codigoBarras = 0;
+        this.codigobarras = 0;
         this.tipo = "tipo";
         this.nombre = "nombre";
         this.marca = "marca";
@@ -22,10 +22,10 @@ public class Producto {
 
     }
 
-    public Producto(int id, int codigoBarras, String tipo, String nombre, String marca, String presentacion, int precio, int cantidad
+    public Producto(int id, int codigobarras, String tipo, String nombre, String marca, String presentacion, int precio, int cantidad
     ) {
         this.id = id;
-        this.codigoBarras = codigoBarras;
+        this.codigobarras = codigobarras;
         this.tipo = tipo;
         this.nombre = nombre;
         this.marca = marca;
@@ -71,29 +71,23 @@ public class Producto {
     }
 
     public int getCodigoBarras() {
-        return codigoBarras;
+        return codigobarras;
     }
 
     public void setCodigoBarras(int codigoBarras) {
-        this.codigoBarras = codigoBarras;
+        this.codigobarras = codigobarras;
     }
 
     @Override
-    public String toString() {
-        return "Producto{" +
-                "id=" + id +
-                ", tipo='" + tipo + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", marca='" + marca + '\'' +
-                ", presentacion='" + presentacion + '\'' +
-                ", precio=" + precio + '\''+
-                ", cantidad=" + cantidad + '\''+
-                '}';
+    public String toString()
+    {
+        return "Cod:" +this.codigobarras+ " - Producto: "+this.nombre +" "+ this.marca + " - " +this.presentacion+" Precio: "+this.precio+" Stock: "+this.cantidad;
     }
     public String mostrarInformacion(){
         //return "Cod: "+ this.id+ "- Producto: "+ this.nombre+ this.marca+ " - "+this.presentacion;
         return "Producto{" +
                 "id=" + id +
+                "codigo de barras=" + codigobarras +'\'' +
                 ", tipo='" + tipo + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", marca='" + marca + '\'' +

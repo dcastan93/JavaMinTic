@@ -7,8 +7,8 @@ import java.sql.DriverManager;
 
 
 public class Conexion {
-    private String conectorInstalado = "jdbc:sqlite";
-    private String baseDatos = "..\\..\\basedatos\\databaseproductos.db";
+    private String conectorInstalado = "jdbc:sqlite:";
+    private String baseDatos = "C:\\Users\\dcast\\IdeaProjects\\JavaMinTic\\basedatos\\databaseproductos.db";
     private Connection conexion;
     private Statement ejecutorSQL;
     private ResultSet rs;
@@ -16,12 +16,16 @@ public class Conexion {
     public boolean crearConexion(){
         try {
             conexion = DriverManager.getConnection(conectorInstalado+baseDatos);//se agrego la bd para que sea ejecutada
+            System.out.println("Connection to SQLite has been established.");
             ejecutorSQL = conexion.createStatement(); //se encarga de ejecutar la sentencia SQL
+            System.out.println("ejecutor to SQLite has been started.");
             ejecutorSQL.setQueryTimeout(30);//cuanto tiempo se espera para que se de la conexion
+            System.out.println("ejecutor has waited for 30 seconds.");
             return true;
 
         }
         catch (Exception e){
+            System.out.println("Connection to SQLite has not been established.");
             return false;
 
         }
