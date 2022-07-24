@@ -41,11 +41,13 @@ public class Conexion {
         }
     }
     public void insertarDatosBD(String sql){
-        try {
-            rs = ejecutorSQL.executeQuery(sql);
-
+        try
+        {
+            int cant = ejecutorSQL.executeUpdate(sql);
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
+            System.out.println("No se agrego producto");
 
         }
     }
