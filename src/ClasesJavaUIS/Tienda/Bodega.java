@@ -30,7 +30,7 @@ public class Bodega {
                 String presentacion = rs.getString(6);
                 int precio = rs.getInt(7);
                 int cantidad = rs.getInt(8);
-                Producto p = new Producto(id, codigobarras, tipo, nombre, marca, presentacion, cantidad, precio);
+                Producto p = new Producto(id, codigobarras, tipo, nombre, marca, presentacion, precio, cantidad);
                 this.productosAlmacenados.add(p);
                 System.out.println("Se leyeron los productos");
             }
@@ -145,23 +145,19 @@ public class Bodega {
         con.cerrarConexion();
 
     }
-    public void incrementarProducto(int codigobarras, int cantidad) {
-        Conexion con  = new Conexion();
+    public void incrementarProducto(int codigobarras, int cantidad, int precio) {
+        Conexion con = new Conexion();
         con.crearConexion();
-        //operaciones
-        String sql = "UPDATE TProductos " +
-                "SET cantidad = cantidad +"+ cantidad +
-                "WHERE codigobarras = "+ codigobarras;
+        String sql = "UPDATE TProductos "+
+                "SET cantidad = cantidad + "+ cantidad +", precio = "+ precio +" "+
+                "WHERE codigobarras = "+codigobarras;
         con.actualizarDatosBD(sql);
-
         con.cerrarConexion();
 
 
     }
 
-    public void actualizarListaEnArchivo(){
 
-    }
 
     public void disminuirProducto(int codigobarras, int cantidad){
         Conexion con = new Conexion();
@@ -175,10 +171,7 @@ public class Bodega {
 
     }
 
-    public void modificarPrecio(int id, int precio){
 
-
-    }
 
     @Override
     public String toString() {

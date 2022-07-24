@@ -81,7 +81,7 @@ public class Producto {
     @Override
     public String toString()
     {
-        return "Cod:" +this.codigobarras+ " - Producto: "+this.nombre +" "+ this.marca + " - " +this.presentacion+" Precio: "+this.precio+" Stock: "+this.cantidad;
+        return "Cod:" +this.codigobarras+ " - Producto: "+this.nombre +"- Marca:  "+ this.marca + " - Presentación " +this.presentacion+" Precio: "+this.precio+" Stock: "+this.cantidad;
     }
     public String mostrarInformacion(){
         //return "Cod: "+ this.id+ "- Producto: "+ this.nombre+ this.marca+ " - "+this.presentacion;

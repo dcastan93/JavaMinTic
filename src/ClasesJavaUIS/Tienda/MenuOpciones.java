@@ -159,14 +159,12 @@ public class MenuOpciones {
 
     public void surtirProducto(){
         this.buscarProductos();
-        int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "digite codigo de producto para surtir",
-                "Surtir producto", JOptionPane.QUESTION_MESSAGE));
-        int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese cantidad de producto para surtir",
-                "Surtir producto", JOptionPane.QUESTION_MESSAGE));
-        this.bodega.incrementarProducto(codigo, cantidad);
+        int codigo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite código del producto para surtido", "Surtir producto", JOptionPane.QUESTION_MESSAGE));
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese cantidad del producto para surtido", "Surtir producto", JOptionPane.QUESTION_MESSAGE));
+        int precio = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese nuevo precio del producto para surtido", "Surtir producto", JOptionPane.QUESTION_MESSAGE));
+        this.bodega.incrementarProducto(codigo, cantidad, precio);
         Producto p = this.bodega.getProducto(codigo);
-        JOptionPane.showMessageDialog(null, p.mostrarInformacion(),
-                "producto surtido", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, p.toString(), "Producto surtido", JOptionPane.INFORMATION_MESSAGE);
 
 
 

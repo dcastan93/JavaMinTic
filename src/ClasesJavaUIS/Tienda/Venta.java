@@ -29,7 +29,8 @@ public class Venta {
             b.disminuirProducto(p.getId(), p.getCantidad());
 
         }
-        b.actualizarListaEnArchivo();
+        Producto p = null;
+        b.disminuirProducto(p.getCodigoBarras(), p.getCantidad()); ;
     }
 
 }
